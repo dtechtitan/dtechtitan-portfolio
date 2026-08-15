@@ -21,9 +21,38 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "dtechtitan | Mayowa Daniel",
+  title: "Mayowa Daniel (dtechtitan) | Data Science & ML",
   description:
-    "Data Science student and developer turning raw data into decisions.",
+    "Data Science student at the University of Lagos building projects in fraud analytics, real estate analysis, and dashboards. Open to internships and freelance work in fintech and AI/ML.",
+  keywords: [
+    "data science",
+    "machine learning",
+    "Lagos",
+    "Nigeria",
+    "fintech",
+    "SQL",
+    "Python",
+    "portfolio",
+    "dtechtitan",
+  ],
+  authors: [{ name: "Mayowa Daniel" }],
+  metadataBase: new URL("https://dtechtitan-portfolio.vercel.app"),
+  openGraph: {
+    title: "Mayowa Daniel (dtechtitan) | Data Science & ML",
+    description:
+      "Data Science student building projects in fraud analytics, real estate analysis, and dashboards.",
+    url: "https://dtechtitan-portfolio.vercel.app",
+    siteName: "dtechtitan Portfolio",
+    images: ["/og-image.png"],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mayowa Daniel (dtechtitan) | Data Science & ML",
+    description:
+      "Data Science student building projects in fraud analytics, real estate analysis, and dashboards.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

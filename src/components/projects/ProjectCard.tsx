@@ -12,7 +12,16 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <Card
       onClick={onClick}
-      className="bg-brand-bg-elevated border border-brand-border rounded-2xl p-6 flex flex-col gap-4 cursor-pointer transition-all duration-200 ease-out hover:border-brand-accent/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-accent/20"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      aria-label={`View case study: ${project.title}`}
+      className="bg-brand-bg-elevated border border-brand-border rounded-2xl p-6 flex flex-col gap-4 cursor-pointer transition-all duration-200 ease-out hover:border-brand-accent/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-accent/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg-base"
     >
       <div className="flex items-center justify-between">
         <span className="font-mono-brand text-xs uppercase tracking-wider text-brand-text-secondary">

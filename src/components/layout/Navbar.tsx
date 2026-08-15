@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,7 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // lock body scroll when the full-screen overlay is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -34,14 +32,13 @@ export default function Navbar() {
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const focusRing =
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg-base";
+
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-brand-bg-base/80 backdrop-blur-md border-b border-brand-border"
-            : "bg-transparent border-b border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-brand-bg-base/80 backdrop-blur-md border-b border-brand-border" : "bg-transparent border-b border-transparent"}`}
       >
         <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
           <a
@@ -51,13 +48,12 @@ export default function Navbar() {
             dtechtitan
           </a>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
                 onClick={() => handleLinkClick(link.href)}
-                className="font-mono-brand text-sm text-brand-text-secondary hover:text-brand-accent transition-colors"
+                className={`font-mono-brand text-sm text-brand-text-secondary hover:text-brand-accent transition-colors ${focusRing}`}
               >
                 {link.label}
               </button>
@@ -73,9 +69,8 @@ export default function Navbar() {
             </Button>
           </div>
 
-          {/* Mobile menu trigger */}
           <button
-            className="md:hidden text-brand-text-primary"
+            className={`md:hidden text-brand-text-primary ${focusRing}`}
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
           >
@@ -84,11 +79,10 @@ export default function Navbar() {
         </nav>
       </header>
 
-      {/* Full-screen mobile overlay */}
       {menuOpen && (
         <div className="fixed inset-0 z-[60] bg-brand-bg-base flex flex-col items-center justify-center gap-8 md:hidden">
           <button
-            className="absolute top-4 right-6 text-brand-text-primary"
+            className={`absolute top-4 right-6 text-brand-text-primary ${focusRing}`}
             onClick={() => setMenuOpen(false)}
             aria-label="Close menu"
           >
@@ -99,7 +93,7 @@ export default function Navbar() {
             <button
               key={link.href}
               onClick={() => handleLinkClick(link.href)}
-              className="font-heading text-3xl text-brand-text-primary hover:text-brand-accent transition-colors"
+              className={`font-heading text-3xl text-brand-text-primary hover:text-brand-accent transition-colors ${focusRing}`}
             >
               {link.label}
             </button>
