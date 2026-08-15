@@ -35,9 +35,19 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="max-w-5xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-brand-border">
-      <p className="font-mono-brand text-xs text-brand-text-secondary">
-        © {new Date().getFullYear()} dtechtitan. All rights reserved.
-      </p>
+      <div className="flex flex-col gap-1">
+        <p className="font-mono-brand text-xs text-brand-text-secondary">
+          © {new Date().getFullYear()} dtechtitan. All rights reserved.
+        </p>
+        <a
+          href="https://github.com/dtechtitan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono-brand text-xs text-brand-accent hover:underline w-fit"
+        >
+          View my GitHub activity →
+        </a>
+      </div>
 
       <div className="flex items-center gap-5">
         {SOCIALS.map(({ label, href, icon: Icon }) => (
