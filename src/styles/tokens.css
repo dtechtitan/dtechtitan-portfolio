@@ -1,0 +1,15 @@
+:root {
+  --brand-bg-base: #0A0A0F;
+  --brand-bg-elevated: #12121A;
+  --brand-accent-cyan: #00E5FF;
+  --brand-accent-violet: #7C5CFF;
+  --brand-accent: var(--brand-accent-cyan); /* swap to --brand-accent-violet to preview the alternate */
+  --brand-text-primary: #F2F2F5;
+  --brand-text-secondary: #9A9AA8;
+  --brand-border: rgba(255, 255, 255, 0.08);
+  --brand-success: #3DDC97;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono-brand: 'JetBrains Mono', monospace;
+}
