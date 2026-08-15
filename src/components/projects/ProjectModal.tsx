@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Project } from "@/types/project";
 import {
   Dialog,
@@ -23,7 +24,18 @@ export default function ProjectModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="bg-brand-bg-elevated border border-brand-border text-brand-text-primary max-w-lg">
+      <DialogContent className="bg-brand-bg-elevated border border-brand-border text-brand-text-primary max-w-lg max-h-[85vh] overflow-y-auto">
+        {project.image && (
+          <div className="relative w-full h-48 rounded-lg overflow-hidden border border-brand-border -mt-2">
+            <Image
+              src={project.image}
+              alt={`${project.title} preview`}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
+
         <DialogHeader>
           <div className="flex items-center gap-3">
             <span
@@ -73,16 +85,28 @@ export default function ProjectModal({
             </div>
           </div>
 
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-sm px-4 py-2 rounded-full bg-brand-accent text-brand-bg-base font-medium text-center hover:opacity-90 transition-opacity mt-2"
-            >
-              View on GitHub
-            </a>
-          )}
+          <div className="flex flex-col sm:flex-row gap-3 mt-2">
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 font-sans text-sm px-4 py-2.5 rounded-full bg-brand-accent text-brand-bg-base font-medium text-center hover:opacity-90 transition-opacity"
+              >
+                View on GitHub
+              </a>
+            )}
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 font-sans text-sm px-4 py-2.5 rounded-full border border-brand-accent text-brand-accent font-medium text-center hover:bg-brand-accent hover:text-brand-bg-base transition-colors"
+              >
+                Live Demo
+              </a>
+            )}
+          </div>
         </div>
       </DialogContent>
     </Dialog>

@@ -22,6 +22,9 @@ export default function About() {
         <p className="font-mono-brand text-xs uppercase tracking-wider text-brand-accent">
           // about
         </p>
+        <h2 className="font-heading text-3xl md:text-4xl font-semibold text-brand-text-primary mt-2">
+          About Me
+        </h2>
       </Reveal>
 
       <Reveal delay={0.1}>
@@ -79,9 +82,9 @@ export default function About() {
 
       <Reveal delay={0.3}>
         <div className="grid grid-cols-3 gap-6 pt-6 border-t border-brand-border">
-          <Counter target={4} label="Projects Shipped" />
-          <Counter target={15000} suffix="+" label="Records Analyzed" />
-          <Counter target={2} label="Domains Explored" />
+          <Counter target={5} label="Projects Shipped" />
+          <Counter target={30000} suffix="+" label="Records Analyzed" />
+          <Counter target={3} label="Domains Explored" />
         </div>
       </Reveal>
     </section>

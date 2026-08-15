@@ -7,7 +7,11 @@ import * as THREE from "three";
 function ParticleField() {
   const pointsRef = useRef<THREE.Points>(null);
   const { viewport, pointer } = useThree();
-  const particleCount = 400;
+  const particleCount = 180;
+
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const positions = useMemo(() => {
     const arr = new Float32Array(particleCount * 3);
@@ -20,7 +24,7 @@ function ParticleField() {
   }, []);
 
   useFrame((state) => {
-    if (!pointsRef.current) return;
+    if (!pointsRef.current || prefersReducedMotion) return;
     pointsRef.current.rotation.y = state.clock.elapsedTime * 0.02;
     pointsRef.current.rotation.x = state.clock.elapsedTime * 0.01;
     const targetX = (pointer.x * viewport.width) / 40;

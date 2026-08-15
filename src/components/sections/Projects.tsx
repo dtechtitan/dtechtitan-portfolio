@@ -16,6 +16,9 @@ export default function Projects() {
     setOpen(true);
   };
 
+  const featured = projects.find((p) => p.id === "lagos-real-estate");
+  const rest = projects.filter((p) => p.id !== "lagos-real-estate");
+
   return (
     <section
       id="projects"
@@ -25,10 +28,28 @@ export default function Projects() {
         <p className="font-mono-brand text-xs uppercase tracking-wider text-brand-accent">
           // projects
         </p>
+        <h2 className="font-heading text-3xl md:text-4xl font-semibold text-brand-text-primary mt-2">
+          Projects
+        </h2>
       </Reveal>
 
+      {featured && (
+        <Reveal>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="font-mono-brand text-xs uppercase tracking-wider text-brand-accent">
+              Featured
+            </span>
+            <div className="h-px flex-1 bg-brand-border" />
+          </div>
+          <ProjectCard
+            project={featured}
+            onClick={() => handleCardClick(featured)}
+          />
+        </Reveal>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
+        {rest.map((project, index) => (
           <Reveal key={project.id} delay={index * 0.08}>
             <ProjectCard
               project={project}

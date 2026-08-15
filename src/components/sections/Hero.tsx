@@ -1,4 +1,11 @@
-import HeroParticles from "@/components/three/HeroParticles";
+"use client";
+
+import dynamic from "next/dynamic";
+
+const HeroParticles = dynamic(
+  () => import("@/components/three/HeroParticles"),
+  { ssr: false },
+);
 
 export default function Hero() {
   return (

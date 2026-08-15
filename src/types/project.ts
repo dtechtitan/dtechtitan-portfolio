@@ -8,5 +8,7 @@ export interface Project {
   approach: string;
   stack: string[];
   status: ProjectStatus;
+  image?: string;
   githubUrl?: string;
+  liveUrl?: string;
 }
