@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Reveal from "@/components/motion/Reveal";
 import Counter from "@/components/motion/Counter";
 
@@ -29,10 +30,17 @@ export default function About() {
 
       <Reveal delay={0.1}>
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-          <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-brand-bg-elevated border border-brand-border flex-shrink-0 flex items-center justify-center mx-auto md:mx-0">
-            <span className="font-mono-brand text-xs text-brand-text-secondary">
-              photo
-            </span>
+          <div className="group relative w-44 h-44 md:w-64 md:h-64 flex-shrink-0 mx-auto md:mx-0">
+            <div className="absolute inset-0 rounded-2xl bg-brand-accent/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="relative w-full h-full rounded-2xl overflow-hidden border border-brand-border group-hover:border-brand-accent/60 transition-colors duration-300">
+              <Image
+                src="/images/projects/headshot.png"
+                alt="Mayowa Daniel"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+            </div>
           </div>
 
           <div className="font-sans text-base md:text-lg text-brand-text-secondary leading-relaxed flex flex-col gap-5">
@@ -69,7 +77,7 @@ export default function About() {
                 {items.map((item) => (
                   <span
                     key={item}
-                    className="font-sans text-sm px-3 py-1 rounded-full border border-brand-border text-brand-text-primary"
+                    className="font-sans text-sm px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/30 text-brand-text-primary"
                   >
                     {item}
                   </span>
